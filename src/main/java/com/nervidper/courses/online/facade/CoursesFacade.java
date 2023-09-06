@@ -2,7 +2,10 @@ package com.nervidper.courses.online.facade;
 
 import java.time.LocalDate;
 import java.util.List;
-
+import com.nervidper.courses.online.dao.CategoryDAO;
+import com.nervidper.courses.online.dao.CategoryHibernateDAO;
+import com.nervidper.courses.online.dao.CoursesDAO;
+import com.nervidper.courses.online.dao.CoursesHibernateDAO;
 import com.nervidper.courses.online.dao.StudentDAO;
 import com.nervidper.courses.online.dao.StudentHibernateDAO;
 import com.nervidper.courses.online.dao.TeacherDAO;
@@ -79,26 +82,27 @@ public class CoursesFacade implements CoursesDelegate {
 	}
 
 	@Override
-	public Course findCourseByName(String name) {
+	public List<Course> findCoursesByName(String name) {	
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.findCoursesByName(name);
+		
+	}
+
+	@Override
+	public List<Course>  findCoursesByDate(LocalDate startDate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Course findCourseByDate(LocalDate startDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	/*@Override
 	public Category findCategoryByName(String categoryName) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	@Override
 	public List<Category> findAllCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		CategoryDAO dao = new CategoryHibernateDAO();
+		return dao.findAllCategory();
 	}
 }

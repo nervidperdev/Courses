@@ -24,11 +24,11 @@ public interface CoursesDelegate {
 	
 	public List<Course> getLatestCourses();
 
-	public Course findCourseByName(String name);
+	public List<Course> findCoursesByName(String name);
 	
-	public Course findCourseByDate(LocalDate startDate);
+	public List<Course> findCoursesByDate(LocalDate startDate);
 	
-	public Category findCategoryByName(String categoryName);
+	/*public Category findCategoryByName(String categoryName);*/
 	
 	public List<Category> findAllCategory();
 
