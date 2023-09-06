@@ -15,6 +15,11 @@ public interface CoursesDAO {
 	
 	public List<Course> getLastestCourses();
 	
+	public List<Course> findAllCourses();
+	
 	public boolean finishCourse(int courseId);
+	
+	public Course createCourse(String name, LocalDate startDate);
+
 	
 }

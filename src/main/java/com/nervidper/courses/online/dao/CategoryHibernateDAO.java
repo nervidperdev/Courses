@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import com.nervidper.courses.online.model.Category;
 import jakarta.persistence.TypedQuery;
 
-public class CategoryHibernateDAO {
+public class CategoryHibernateDAO implements CategoryDAO {
 	
 
 
@@ -42,6 +42,8 @@ public class CategoryHibernateDAO {
 		sesion.close();
 		return listCategory;
 	}
+
+	
 
 
 }
