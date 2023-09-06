@@ -10,21 +10,21 @@
 <body>
 	<div class="login-box">
   <h2>Registro Nuevo Alumno</h2>
-  <form>
+  <form action = "Register" method="post">
     <div class="user-box">
-      <input id="userName" type="text" name="Username" required>
+      <input id="userName" type="text" name="name" required>
       <label id="userName">Nombre</label>
     </div>
     <div class="user-box">
-      <input id="userName" type="text" name="Username" required>
+      <input id="userName" type="text" name="surname" required>
       <label id="userName">Apellido</label>
     </div>
     <div class="user-box">
-      <input id="userName" type="text" name="Username" required>
+      <input id="userName" type="text" name="email" required>
       <label id="userName">Email</label>
     </div>
     <div class="user-box">
-      <input id="userName" type="text" name="Username" required>
+      <input id="userName" type="text" name="email" required>
       <label id="userName">Repita email</label>
     </div>
     <div class="user-box">
@@ -36,13 +36,7 @@
       <label>Repita Contraseña</label>
     </div>
   
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Confirmar
-    </a>
+    <input type ="submit" value="REGISTRAR">
    
   </form> 
 </body>
