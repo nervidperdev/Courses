@@ -10,13 +10,13 @@ import com.nervidper.courses.online.model.Teacher;
 import com.nervidper.courses.online.model.User;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	
     private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         	HttpSession session = request.getSession();
             session.setAttribute("email", email);
             session.setAttribute("type", type);
-            
+            System.out.println("type");
         	if (loggedUser instanceof Teacher) {
         		Teacher teacher = (Teacher) loggedUser;
         		session.setAttribute("userId", teacher.getTeacherId());

@@ -8,12 +8,13 @@ import com.nervidper.courses.online.facade.CoursesFacade;
 import com.nervidper.courses.online.model.Student;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
+@WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
