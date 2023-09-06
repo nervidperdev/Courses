@@ -17,8 +17,5 @@
             <param-value>com.nervidper.courses.online.controller</param-value>
         </init-param>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>MyApplication</servlet-name>
-        <url-pattern>/api/*</url-pattern>
-    </servlet-mapping>
+ 
 </web-app>
