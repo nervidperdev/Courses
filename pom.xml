@@ -19,7 +19,7 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
+ <dependencies>
   	<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 	<dependency>
 	    <groupId>com.mysql</groupId>
@@ -45,29 +45,5 @@
         <version>6.0.0</version>
         <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client -->
-	<dependency>
-	    <groupId>org.glassfish.jersey.core</groupId>
-	    <artifactId>jersey-client</artifactId>
-	    <version>3.1.2</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet-core -->
-	<dependency>
-	    <groupId>org.glassfish.jersey.containers</groupId>
-	    <artifactId>jersey-container-servlet-core</artifactId>
-	    <version>3.1.2</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2 -->
-	<dependency>
-	    <groupId>org.glassfish.jersey.inject</groupId>
-	    <artifactId>jersey-hk2</artifactId>
-	    <version>3.1.2</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
-	<dependency>
-	    <groupId>com.fasterxml.jackson.datatype</groupId>
-	    <artifactId>jackson-datatype-jsr310</artifactId>
-	    <version>2.15.2</version>
-	</dependency>
   </dependencies>
 </project>
