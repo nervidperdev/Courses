@@ -3,9 +3,11 @@ package com.nervidper.courses.online.model;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nervidper.courses.online.constants.TableConstants;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +26,8 @@ public class Teacher extends User {
 	private String surname;
 	private String email;
 	private String password;
-	@OneToMany(mappedBy = "teacher")
+	@JsonManagedReference
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private List<Course> coursesList;
 	
 	

@@ -17,12 +17,12 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int categoryId;
-	private String nameCategory;
+	private String name;
 	
 	
 	public Category(int categoryId, String nameCategory) {
 		this.categoryId = categoryId;
-		this.nameCategory = nameCategory;
+		this.name = nameCategory;
 	}
 
 
@@ -40,12 +40,12 @@ public class Category {
 
 
 	public String getNameCategory() {
-		return nameCategory;
+		return name;
 	}
 
 
 	public void setNameCategory(String nameCategory) {
-		this.nameCategory = nameCategory;
+		this.name = nameCategory;
 	}
 
 
@@ -68,7 +68,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", nameCategory=" + nameCategory + "]";
+		return "Category [categoryId=" + categoryId + ", nameCategory=" + name + "]";
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.nervidper.courses.online.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import com.nervidper.courses.online.facade.CoursesDelegate;
 import com.nervidper.courses.online.facade.CoursesFacade;
@@ -28,6 +29,8 @@ public class CoursesCategoryServlet extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("categoryList", new ArrayList<Category>());
+			request.getRequestDispatcher("indexPrincipal.jsp").forward(request, response);
 		}
 	}
 	

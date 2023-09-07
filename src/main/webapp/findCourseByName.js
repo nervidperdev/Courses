@@ -19,6 +19,7 @@ function findCourseByName() {
 		
 
 function printCourses(courses) {
+	console.log(courses)
 	let divResult = document.getElementById("listResultCourses");
 	let resultHtml = '<div><ul>';
 	for(let course of courses) {

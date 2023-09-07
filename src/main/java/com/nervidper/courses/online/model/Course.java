@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nervidper.courses.online.constants.TableConstants;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,12 +30,14 @@ public class Course {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name="teacherID")
 	private Teacher teacher;
 	@ManyToOne
 	@JoinColumn(name="categoryID")
 	private Category category;
-	@OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private List<Enrollment> enrollments;
 	
 	public Course(int courseId, String name, LocalDate startDate, LocalDate endDate, Teacher teacher, Category category,

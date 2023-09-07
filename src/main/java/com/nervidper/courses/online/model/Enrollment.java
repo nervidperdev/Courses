@@ -3,6 +3,7 @@ package com.nervidper.courses.online.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nervidper.courses.online.constants.TableConstants;
 
 import jakarta.persistence.Entity;
@@ -23,9 +24,11 @@ public class Enrollment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int enrollmentId;
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "courseID")
 	private Course course;
 	@ManyToOne
+	@JsonBackReference
 	@JoinColumn(name = "studentID")
 	private Student student;
 	private LocalDate enrollmentDate;

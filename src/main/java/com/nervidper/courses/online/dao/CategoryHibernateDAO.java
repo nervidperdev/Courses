@@ -1,5 +1,6 @@
 package com.nervidper.courses.online.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -28,7 +29,7 @@ public class CategoryHibernateDAO implements CategoryDAO {
 	}
 
 	public List<Category> findAllCategory() {
-		List<Category> listCategory = null;
+		List<Category> listCategory = new ArrayList<Category>();
 		Session sesion = DaoUtility.getSession();
 		Transaction transaccion = sesion.beginTransaction();
 		try {
