@@ -23,7 +23,7 @@ function printCourses(courses) {
 	let divResult = document.getElementById("listResultCourses");
 	let resultHtml = '<div><ul>';
 	for(let course of courses) {
-		resultHtml = resultHtml + `<li><span>Nombre del curso: </span>${courses.name}</li>`;
+		resultHtml = resultHtml + `<li><span>Nombre del curso: </span>${course.name}</li>`;
 	}
 	resultHtml = resultHtml + '</ul></div>';
 	
