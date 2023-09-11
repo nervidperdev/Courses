@@ -1,9 +1,9 @@
 package com.nervidper.courses.online.model;
 
 import java.util.Objects;
-
 import com.nervidper.courses.online.constants.TableConstants;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,15 +16,15 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "categoryID")
 	private int categoryId;
+	
 	private String name;
-	
-	
+
 	public Category(int categoryId, String nameCategory) {
 		this.categoryId = categoryId;
 		this.name = nameCategory;
 	}
-
 
 	public Category() {}
 
