@@ -3,14 +3,11 @@ package com.nervidper.courses.online.dao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.nervidper.courses.online.model.Course;
-
 import jakarta.persistence.TypedQuery;
-
 
 
 
@@ -25,7 +22,6 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		List<Course> courseList = new ArrayList<Course>();
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
-		System.out.println("ESTOY EN EL DAOOOOOOO");
 		try {
 			TypedQuery<Course> query = session.createQuery("from Course where name like :name", Course.class);
 			query.setParameter("name", "%" + name + "%");
@@ -43,14 +39,41 @@ public class CoursesHibernateDAO implements CoursesDAO {
 
 	@Override
 	public List<Course> findCoursesByDate(LocalDate startDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<Course> courseList = new ArrayList<Course>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			TypedQuery<Course> query = session.createQuery("from Course where date = :startDate", Course.class);
+			query.setParameter(0, startDate);
+			courseList = query.getResultList();
+			transaction.commit();
+		} catch (HibernateException e){
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return courseList;
+			
+		}
+		
 
 	@Override
 	public List<Course> findCoursesByCategory(int categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Course> coursesCategory= new ArrayList<Course>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			TypedQuery<Course> query = session.createQuery("from Course where category.categoryId = :categoryId", Course.class);
+			query.setParameter("categoryId", categoryId);
+			coursesCategory = query.getResultList();
+			System.out.println("CURSO DAO BY CATEGORY " + coursesCategory);
+			transaction.commit();
+		} catch (HibernateException e){
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return coursesCategory;
 	}
 
 	@Override
@@ -69,12 +92,25 @@ public class CoursesHibernateDAO implements CoursesDAO {
 
 	@Override
 	public List<Course> findAllCourses() {
+		List<Course> listCourses = null;
+		Session sesion = DaoUtility.getSession();
+		Transaction transaccion = sesion.beginTransaction();
+		try {
+			TypedQuery<Course> query = sesion.createQuery("from Course", Course.class);
+			listCourses = query.getResultList();
+			transaccion.commit();
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			transaccion.rollback();
+		}
+		sesion.close();
+		return listCourses;
+	}
+
+	@Override
+	public Course createCourse(Course course) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public Course createCourse(String name, LocalDate startDate) {
-		return null;
-		
-	} 
+
 }

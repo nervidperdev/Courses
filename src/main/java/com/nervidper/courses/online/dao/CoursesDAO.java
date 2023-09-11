@@ -19,7 +19,7 @@ public interface CoursesDAO {
 	
 	public boolean finishCourse(int courseId);
 	
-	public Course createCourse(String name, LocalDate startDate);
+	public Course createCourse(Course course);
 
 	
 }

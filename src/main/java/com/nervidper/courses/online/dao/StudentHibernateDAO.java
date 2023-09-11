@@ -4,7 +4,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.nervidper.courses.online.model.Course;
 import com.nervidper.courses.online.model.Student;
 
 import jakarta.persistence.TypedQuery;
