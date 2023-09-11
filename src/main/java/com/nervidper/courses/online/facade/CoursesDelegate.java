@@ -2,13 +2,10 @@ package com.nervidper.courses.online.facade;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import com.nervidper.courses.online.exception.LoginException;
 import com.nervidper.courses.online.exception.RegistrationException;
-import com.nervidper.courses.online.exception.WrongPasswordException;
 import com.nervidper.courses.online.model.Category;
 import com.nervidper.courses.online.model.Course;
-import com.nervidper.courses.online.model.Enrollment;
 import com.nervidper.courses.online.model.Student;
 import com.nervidper.courses.online.model.User;
 
@@ -20,7 +17,7 @@ public interface CoursesDelegate {
 	
 	public boolean enrollInCourse(int courseId);
 	
-	public List<Enrollment> findAllCourses();
+	public List<Course> findAllCourses();
 	
 	public List<Course> getLatestCourses();
 
@@ -29,6 +26,8 @@ public interface CoursesDelegate {
 	public List<Course> findCoursesByDate(LocalDate startDate);
 	
 	/*public Category findCategoryByName(String categoryName);*/
+	
+	public List<Course> findCoursesByCategory(int categoryId);
 	
 	public List<Category> findAllCategory();
 
