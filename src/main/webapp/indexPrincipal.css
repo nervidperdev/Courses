@@ -147,7 +147,20 @@ select {
 	flex-grow: 1;
 }
 
+.courseContainer {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 2rem;
+	flex-wrap: wrap;
+}
 
-
+.courseCard {
+	border: 1px lightgrey solid;
+	border-radius: 0.25rem;
+	max-width: 22rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 
 

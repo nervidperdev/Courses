@@ -98,15 +98,18 @@ function findCourseByName() {
 
 
 function printCourses(courses) {
-	console.log(courses)
 	let divResult = document.getElementById("searchResult");
-	let resultHtml = '<div><ul>';
+	let resultHtml = '<div class="courseContainer">';
 	for (let course of courses) {
-		resultHtml = resultHtml + `<div class="mb-3">
-		<li><span>${course.name}</span></li>
-        </div>`;
+		resultHtml = resultHtml + `
+	
+			<div class="courseCard">
+				<img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80"/>
+				<h4>${course.name}</h4>
+			</div>
+		`;
 	}
-	resultHtml = resultHtml + '</ul></div>';
+	resultHtml = resultHtml + '</div>';
 
 	divResult.innerHTML = resultHtml;
 }
