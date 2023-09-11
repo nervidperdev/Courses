@@ -10,14 +10,26 @@
 <link rel="stylesheet" href="indexPrincipal.css" type="text/css">
 </head>
 <body onload="initPage()">
+	<% String userType = (String) session.getAttribute("type");%>
+	<% String userEmail = (String) session.getAttribute("email");%>
+	<% String name = (String) session.getAttribute("name");%>
+	<% String surname = (String) session.getAttribute("surname");%>
+
 	<header>
 		<nav role="navigation">
 			<div id="menuToggle">
 				<input type="checkbox" /> <span></span> <span></span> <span></span>
+				<% if(userEmail != null) { %>
 				<ul id="menu">
-					<li><a href="login.jsp">Inicia Sesion</a></li>
-					<li><a href="registerStudent.jsp">Nuevo Alumn@</a></li>
+						<li><a href="Logout">Cerrar sesión</a></li>
 				</ul>
+				
+				<% } else { %>
+					<ul id="menu">
+						<li><a href="login.jsp">Inicia Sesion</a></li>
+						<li><a href="registerStudent.jsp">Nuevo Alumn@</a></li>
+					</ul>
+				<% } %>
 			</div>
 		</nav>
 	</header>
@@ -30,13 +42,9 @@
 			</select>
 		</div>
 
-		<% String userType = (String) session.getAttribute("type");%>
-		<% String userEmail = (String) session.getAttribute("email");%>
-		<% System.out.println(userType); %>
-		<% if(userType != null && userType.equals("teacher")) { %>
-			<h1>Teacher</h1>
-		<% } else if(userType != null && userType.equals("student")) { %>
-			<h1><%= userEmail %></h1>
+		
+		<% if(name != null && surname != null) { %>
+			<h1>Hola <%= name %> <%= surname %></h1>
 		<% } %>
 
 		<div id="searchResult"></div>

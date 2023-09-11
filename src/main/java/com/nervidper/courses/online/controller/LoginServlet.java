@@ -35,10 +35,14 @@ public class LoginServlet extends HttpServlet {
             System.out.println("type");
         	if (loggedUser instanceof Teacher) {
         		Teacher teacher = (Teacher) loggedUser;
+        		session.setAttribute("name", teacher.getName());
+        		session.setAttribute("surname", teacher.getSurname());
         		session.setAttribute("userId", teacher.getTeacherId());
         		response.sendRedirect("indexPrincipal.jsp");
         	} else {
         		Student student = (Student) loggedUser;
+        		session.setAttribute("name", student.getName());
+        		session.setAttribute("surname", student.getSurname());
         		session.setAttribute("userId", student.getStudentId());
         		response.sendRedirect("indexPrincipal.jsp");
         	}
