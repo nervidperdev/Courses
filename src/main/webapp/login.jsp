@@ -10,9 +10,9 @@
 <body>
 <div class="login-box">
   <h2>Inicio de Sesion</h2>
-  <form>
+  <form action="Login" method="post">
     <div class="user-box">
-      <input id="userName" type="text" name="Username" required>
+      <input id="userName" type="text" name="email" required>
       <label id="userName">Email</label>
     </div>
     <div class="user-box">
@@ -21,25 +21,24 @@
     </div>
     <div>
     	<label class="inputTeacher" id="inputTeacher">Profesor</label>
-    	<input type="radio" name="select" onclick="visibility();">
+    	<input type="radio" value="teacher" name="type" onclick="visibility();">
 	    <label class="inputTeacher" id="inputStudent">Alumno</label>
-	    <input type="radio" name="select" onclick="visibility();" checked="checked">
-    	
+	    <input type="radio" value="student" name="type" onclick="visibility();" checked="checked">
+    	<input type ="submit" value="ACCEDER">
     </div>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Acceder
-    </a>
+ 
    
   </form> 
   
   <div id="registerStudent" class="visibility">
    <p>Eres nuevo?<a id="enlace" href="registerStudent.jsp">Registrate</a></p>
   </div>
- 
+   <% String error = (String)request.getAttribute("error"); %>
+          <div>
+          		<% if (error != null) { %>
+          			<span><%=error %></span>
+          		<% } %>
+          </div>
   
 </div>
 
