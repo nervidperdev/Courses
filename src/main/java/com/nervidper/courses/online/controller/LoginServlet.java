@@ -36,11 +36,11 @@ public class LoginServlet extends HttpServlet {
         	if (loggedUser instanceof Teacher) {
         		Teacher teacher = (Teacher) loggedUser;
         		session.setAttribute("userId", teacher.getTeacherId());
-        		response.sendRedirect("indexTeacher.jsp");
+        		response.sendRedirect("indexPrincipal.jsp");
         	} else {
         		Student student = (Student) loggedUser;
         		session.setAttribute("userId", student.getStudentId());
-        		response.sendRedirect("indexStudent.jsp");
+        		response.sendRedirect("indexPrincipal.jsp");
         	}
         } catch(WrongPasswordException e) {
         	e.printStackTrace();
