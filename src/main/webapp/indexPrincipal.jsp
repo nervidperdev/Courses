@@ -21,6 +21,9 @@
 				<input type="checkbox" /> <span></span> <span></span> <span></span>
 				<% if(userEmail != null) { %>
 				<ul id="menu">
+						<% if(userType != null && userType.equals("teacher")) { %>
+							<li><a href="registerCourse.jsp">Crear curso</a></li>
+						<% } %>
 						<li><a href="Logout">Cerrar sesión</a></li>
 				</ul>
 				
