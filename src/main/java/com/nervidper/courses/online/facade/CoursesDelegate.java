@@ -1,6 +1,5 @@
 package com.nervidper.courses.online.facade;
 
-import java.time.LocalDate;
 import java.util.List;
 import com.nervidper.courses.online.exception.LoginException;
 import com.nervidper.courses.online.exception.RegistrationException;
@@ -19,17 +18,21 @@ public interface CoursesDelegate {
 	
 	public List<Course> findAllCourses();
 	
-	public List<Course> getLatestCourses();
-
 	public List<Course> findCoursesByName(String name);
-	
-	public List<Course> findCoursesByDate(LocalDate startDate);
-	
-	/*public Category findCategoryByName(String categoryName);*/
 	
 	public List<Course> findCoursesByCategory(int categoryId);
 	
 	public List<Category> findAllCategory();
+	
+	public List<Course> findAllCoursesByTeacher(int teacherID);
+	
+	public List<Course> findAllCoursesByStudent(int studentID);
+	
+	public Course createCourse(Course course);
+	
+	public List<Student> findStudentsByCourse(int courseId);
+	
+	public List<Course> findTeacherCoursesByName(int teacherID, String name);
 
 
 }

@@ -1,6 +1,5 @@
 package com.nervidper.courses.online.facade;
 
-import java.time.LocalDate;
 import java.util.List;
 import com.nervidper.courses.online.dao.CategoryDAO;
 import com.nervidper.courses.online.dao.CategoryHibernateDAO;
@@ -74,11 +73,6 @@ public class CoursesFacade implements CoursesDelegate {
 		return dao.findAllCourses();
 	}
 
-	@Override
-	public List<Course> getLatestCourses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Course> findCoursesByName(String name) {	
@@ -87,26 +81,48 @@ public class CoursesFacade implements CoursesDelegate {
 		
 	}
 
-	@Override
-	public List<Course>  findCoursesByDate(LocalDate startDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public List<Course> findCoursesByCategory(int categoryId) {
 		CoursesDAO dao = new CoursesHibernateDAO();
 		return dao.findCoursesByCategory(categoryId);
 	}
 
-	/*@Override
-	public Category findCategoryByName(String categoryName) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
 
 	@Override
 	public List<Category> findAllCategory() {
 		CategoryDAO dao = new CategoryHibernateDAO();
 		return dao.findAllCategory();
+	}
+
+	@Override
+	public Course createCourse(Course course) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.createCourse(course);
+	}
+
+
+	@Override
+	public List<Course> findAllCoursesByTeacher(int teacherID) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.findAllCoursesByTeacher(teacherID);
+	}
+
+	@Override
+	public List<Course> findAllCoursesByStudent(int studentID) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.findAllCoursesByStudent(studentID);
+	}
+
+	@Override
+	public List<Student> findStudentsByCourse(int courseId) {
+		StudentDAO dao = new StudentHibernateDAO();
+		return dao.findStudentsByCourse(courseId);
+		
+	}
+
+	@Override
+	public List<Course> findTeacherCoursesByName(int teacherID, String name) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.findTeacherCoursesByName(teacherID, name);
 	}
 }
