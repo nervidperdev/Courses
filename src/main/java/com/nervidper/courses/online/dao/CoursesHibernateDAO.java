@@ -58,8 +58,9 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		List<Course> listCoursesTeacher = new ArrayList<Course>();
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
+		System.out.println("ESTOY EN EL DAOOOO");
 		try {
-			TypedQuery<Course> query = session.createQuery("from Course where teacher.teacherId = :teacherID",
+			TypedQuery<Course> query = session.createQuery("from Course where teacher.teacherId = :teacherId",
 					Course.class);
 			query.setParameter("teacherId", teacherID);
 			listCoursesTeacher = query.getResultList();
@@ -74,13 +75,14 @@ public class CoursesHibernateDAO implements CoursesDAO {
 	}
 
 	@Override
-	public List<Course> findAllCoursesByStudent(int studentID) {
+	public List<Course> findAllCoursesByEnrollment(int studentID) {
 		List<Course> listCoursesStudent = new ArrayList<Course>();
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			TypedQuery<Course> query = session.createQuery("from Course where student,studentId =:studentID",
+			TypedQuery<Course> query = session.createQuery("from Course where student.studentId =:studentId",
 					Course.class);
+			query.setParameter("studentID", studentID);
 			listCoursesStudent = query.getResultList();
 			transaction.commit();
 		} catch (HibernateException e) {
@@ -134,10 +136,6 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		return null;
 	}
 	
-	public List<Course> findCoursesByEnrollment(int studentID) {
-		// TODO Auto-generated method stub
-				return null;
-	}
 	
 	@Override
 	public boolean finishCourse(int courseId) {
@@ -148,4 +146,11 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		return false;
 	}
 
+	@Override
+	public List<Course> findAllCoursesByStudent(int studentID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

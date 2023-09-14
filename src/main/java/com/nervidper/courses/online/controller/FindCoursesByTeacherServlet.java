@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.nervidper.courses.online.facade.CoursesDelegate;
 import com.nervidper.courses.online.facade.CoursesFacade;
 import com.nervidper.courses.online.model.Course;
@@ -31,7 +32,9 @@ public class FindCoursesByTeacherServlet extends HttpServlet {
 		try {
 			
 			List<Course> coursesListTeacher = facade.findAllCoursesByTeacher(teacherID);
-			ObjectMapper mapper = JsonMapper.builder().build();
+			ObjectMapper mapper = JsonMapper.builder()
+	                .addModule(new JavaTimeModule())
+	                .build();
 			String jsonResponse = mapper.writeValueAsString(coursesListTeacher);
 			response.setContentType("application/json;charset=utf-8");
 			PrintWriter output = response.getWriter();
