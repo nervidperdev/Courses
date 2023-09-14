@@ -46,7 +46,12 @@ public class Teacher extends User {
 	public Teacher() {
 		super();
 	}
+	
 
+	public Teacher(int teacherId) {
+		super();
+		this.teacherId = teacherId;
+	}
 
 
 	public int getTeacherId() {

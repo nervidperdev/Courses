@@ -40,9 +40,8 @@ public class Course {
 	@JsonManagedReference
 	private List<Enrollment> enrollments;
 	
-	public Course(int courseId, String name, LocalDate startDate, LocalDate endDate, Teacher teacher, Category category,
+	public Course(String name, LocalDate startDate, LocalDate endDate, Teacher teacher, Category category,
 			List<Enrollment> enrollments) {
-		this.courseId = courseId;
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;

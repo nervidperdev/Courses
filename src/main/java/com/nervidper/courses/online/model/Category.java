@@ -18,7 +18,6 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "categoryID")
 	private int categoryId;
-	
 	private String name;
 
 	public Category(int categoryId, String nameCategory) {
@@ -27,7 +26,12 @@ public class Category {
 	}
 
 	public Category() {}
+	
 
+	public Category(int categoryId) {
+		super();
+		this.categoryId = categoryId;
+	}
 
 	public int getCategoryId() {
 		return categoryId;
