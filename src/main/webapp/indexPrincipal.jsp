@@ -19,20 +19,11 @@
 		<nav role="navigation">
 			<div id="menuToggle">
 				<input type="checkbox" /> <span></span> <span></span> <span></span>
-				<% if(userEmail != null) { %>
+
 				<ul id="menu">
-						<% if(userType != null && userType.equals("teacher")) { %>
-							<li><a href="registerCourse.jsp">Crear curso</a></li>
-						<% } %>
-						<li><a href="Logout">Cerrar sesión</a></li>
+					<li><a href="login.jsp">Inicia Sesion</a></li>
+					<li><a href="registerStudent.jsp">Nuevo Alumn@</a></li>
 				</ul>
-				
-				<% } else { %>
-					<ul id="menu">
-						<li><a href="login.jsp">Inicia Sesion</a></li>
-						<li><a href="registerStudent.jsp">Nuevo Alumn@</a></li>
-					</ul>
-				<% } %>
 			</div>
 		</nav>
 	</header>
@@ -45,10 +36,6 @@
 			</select>
 		</div>
 
-		
-		<% if(name != null && surname != null) { %>
-			<h1>Hola <%= name %> <%= surname %></h1>
-		<% } %>
 
 		<div id="searchResult"></div>
 	</main>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="registerStudent.css" type="text/css">
 </head>
 <body>
-	<div class="login-box">
+<div class="login-box">
   <h2>Registro Nuevo Alumno</h2>
   <form action = "Register" method="post">
     <div class="user-box">
@@ -35,9 +35,8 @@
       <input type="password" name="password" required>
       <label>Repita Contraseña</label>
     </div>
-  
     <input type ="submit" value="REGISTRAR">
-   
-  </form> 
+  </form>
+</div>
 </body>
 </html>
