@@ -38,13 +38,13 @@ public class LoginServlet extends HttpServlet {
         		session.setAttribute("name", teacher.getName());
         		session.setAttribute("surname", teacher.getSurname());
         		session.setAttribute("userId", teacher.getTeacherId());
-        		response.sendRedirect("indexPrincipal.jsp");
+        		response.sendRedirect("indexTeacher.jsp");
         	} else {
         		Student student = (Student) loggedUser;
         		session.setAttribute("name", student.getName());
         		session.setAttribute("surname", student.getSurname());
         		session.setAttribute("userId", student.getStudentId());
-        		response.sendRedirect("indexPrincipal.jsp");
+        		response.sendRedirect("indexStudent.jsp");
         	}
         } catch(WrongPasswordException e) {
         	e.printStackTrace();
