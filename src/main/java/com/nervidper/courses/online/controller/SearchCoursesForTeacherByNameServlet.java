@@ -33,11 +33,9 @@ public class SearchCoursesForTeacherByNameServlet extends HttpServlet {
                 .build();
 		String json = mapper.writeValueAsString(courses);
 		response.setContentType("application/json;charset=utf-8");
-		PrintWriter salida = response.getWriter();
-		salida.write(json);
-		salida.close();	
-		 
-		
+		PrintWriter output = response.getWriter();
+		output.write(json);
+		output.close();
 	}
 
 }

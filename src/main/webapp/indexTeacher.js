@@ -1,6 +1,9 @@
 /**
  * 
  */
+
+document.getElementById("findCourse").addEventListener("keyup", findCourseByName);
+
 function loadAllCourses() {
 	axios.get(
 		"FindCoursesByTeacher"
@@ -29,6 +32,19 @@ function printCourses(courses) {
 	divResult.innerHTML = resultHtml;
 }
 
+function findCourseByName() {
+	let textBox = document.getElementById("findCourse").value;
+	if (textBox != "") {
+		axios.post(
+			"SearchCoursesForTeacherByName",
+			null,
+			{ params: { searchName: textBox } }).then(function(response) {
+				printCourses(response.data);
+			}).catch(function(error) {
+				console.log(error);
+			});
+	}
+}
 
 function initPageTeacher() {
 	loadAllCourses();

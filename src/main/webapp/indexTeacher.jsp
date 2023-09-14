@@ -47,7 +47,3 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="indexTeacher.js"></script>
 </html>
-
-
-</body>
-</html>

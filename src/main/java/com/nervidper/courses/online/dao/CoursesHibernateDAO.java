@@ -58,7 +58,6 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		List<Course> listCoursesTeacher = new ArrayList<Course>();
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
-		System.out.println("ESTOY EN EL DAOOOO");
 		try {
 			TypedQuery<Course> query = session.createQuery("from Course where teacher.teacherId = :teacherId",
 					Course.class);
@@ -132,8 +131,21 @@ public class CoursesHibernateDAO implements CoursesDAO {
 
 	@Override
 	public List<Course> findTeacherCoursesByName(int teacherID, String name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Course> courseList = new ArrayList<Course>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			TypedQuery<Course> query = session.createQuery("from Course where name like :name and teacher.teacherId = :teacherId", Course.class);
+			query.setParameter("name", "%" + name + "%");
+			query.setParameter("teacherId", teacherID);
+			courseList = query.getResultList();
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return courseList;
 	}
 	
 	
