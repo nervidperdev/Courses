@@ -1,9 +1,12 @@
 package com.nervidper.courses.online.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.nervidper.courses.online.model.Course;
 import com.nervidper.courses.online.model.Student;
 
 import jakarta.persistence.TypedQuery;
@@ -46,7 +49,7 @@ public class StudentHibernateDAO implements StudentDAO {
 		} catch(HibernateException e){
 			e.printStackTrace();
 			transaccion.rollback();
-			return null; //devolveria una exception
+			return null; 
 		}
 		sesion.close();
 		return student;
@@ -55,8 +58,22 @@ public class StudentHibernateDAO implements StudentDAO {
 
 	@Override
 	public List<Student> findStudentsByCourse(int courseId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Student> studentList = new ArrayList<Student>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			TypedQuery<Student> query = session.createQuery("select S.* from student S join enrollment E on S.studentID = E.studentID join courses C 	on E.courseID = C.courseID where C.courseID = :courseID", Student.class);
+			query.setParameter("courseID", courseId);
+			System.out.println(query);
+			studentList = query.getResultList();
+			System.out.println(studentList);
+			transaction.commit();
+		} catch (HibernateException e){
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return studentList;
 	}
 
 	@Override
