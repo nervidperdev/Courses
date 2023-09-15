@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.nervidper.courses.online.model.Course;
+
 import jakarta.persistence.TypedQuery;
 
 public class CoursesHibernateDAO implements CoursesDAO {
@@ -159,9 +160,23 @@ public class CoursesHibernateDAO implements CoursesDAO {
 	}
 
 	@Override
-	public List<Course> findAllCoursesByStudent(int studentID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Course> findAllCoursesByStudent(int studentId) {
+		List<Course> courseList = new ArrayList<Course>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			//TypedQuery<Course> query = session.createQuery("from Student S join enrollment E on S.studentId = E.student.studentId join courses C on E.course.courseId = C.courseId where S.studentId = :studentId", Course.class);
+			TypedQuery<Course> query = session.createQuery("from Course as C join Enrollment as E on C.courseId = E.course.courseId join Student as S on E.student.studentId = S.studentId where S.studentId = :studentId", Course.class);
+			query.setParameter("studentId", studentId);
+			courseList = query.getResultList();
+			System.out.println(courseList);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return courseList;
 	}
 
 	

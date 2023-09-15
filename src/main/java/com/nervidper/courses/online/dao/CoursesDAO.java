@@ -14,7 +14,7 @@ public interface CoursesDAO {
 	
 	public List<Course> findTeacherCoursesByName(int teacherID, String name);
 	
-	public List<Course> findAllCoursesByStudent(int studentID);
+	public List<Course> findAllCoursesByStudent(int studentId);
 	
 	public List<Course> findAllCourses();
 	

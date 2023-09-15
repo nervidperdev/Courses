@@ -26,7 +26,7 @@ public interface CoursesDelegate {
 	
 	public List<Course> findAllCoursesByTeacher(int teacherID);
 	
-	public List<Course> findAllCoursesByStudent(int studentID);
+	public List<Course> findAllCoursesByStudent(int studentId);
 	
 	public Course createCourse(Course course);
 	

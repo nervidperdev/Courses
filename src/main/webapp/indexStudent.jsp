@@ -18,7 +18,7 @@
 				<span></span> 
 				<span></span>
 				<ul id="menu">
-					<li><a href="allCoursesStudent.jsp">Mis Cursos</a></li>
+					<li><a href="FindCoursesByStudent">Mis Cursos</a></li>
 					<li><a href="Logout">Cerrar Sesión</a></li>
 				</ul>
 			</div>
@@ -26,10 +26,6 @@
 	</header>
 
 	<main>
-		<div class="contenedor">
-			<input class="inputText" id="findCourse" type="text" placeholder="Buscar curso"> 
-		</div>
-
 
 		<% if(name != null && surname != null) { %>
 		<h1>
