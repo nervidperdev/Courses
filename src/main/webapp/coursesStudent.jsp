@@ -6,30 +6,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Mis Cursos</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="indexPrincipal.css" type="text/css">
 </head>
 <body>
 
-	<h2>Mis Cursos</h2>
-
+	<h2 class="myCoursesTitle">Mis Cursos</h2>
 	<% List<Course> courses = (List<Course>) request.getAttribute("myCourses"); %>
 	<% if (courses != null && courses.size() > 0) { %>
-		<% for (Course course : courses) { %>
-			<div class="courseContainer">
-				<div class="courseCard">
-					<img
-						src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80" />
-					<h4><%= course.getName() %></h4>
-				</div>
-			</div>
-		<% }%>
+	<div class="courseContainer">
+	<% for (Course course : courses) { %>
+
+	<div class="card" style="width: 18rem;">
+		<img class="card-img-top" alt="<%= course.getName() %>_image"
+			src="<%= course.getImageUrl() %>" />
+		<div class="card-body cardBody">
+			<h5 class="card-title cardTitle"><%= course.getName() %></h5>
+		</div>
+	</div>
+	<% }%>
+	</div>
 	<% } else { %>
-		<!-- Show empty screen -->
-		<div class="emptyCoursesContainer">
-			<h1>No tienes cursos</h1>
-			<p>Puedes matricularte en todos los cursos que lo desees.</p>
+	<div class="container">
+			<div class="h-50 p-5 bg-body-tertiary border rounded-3 emptyResult">
+	          <h2>No hay cursos que mostrar</h2>
+	          <p>No tenemos resultados para mostrar, inténtalo con otra búsqueda</p>
+	        </div>
 		</div>
 	<% }%>
 </body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+	crossorigin="anonymous"></script>
 </html>

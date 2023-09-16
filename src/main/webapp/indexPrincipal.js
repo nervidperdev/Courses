@@ -109,7 +109,7 @@ function printCourses(courses) {
 	for (let course of courses) {
 		resultHtml = resultHtml + `
     <div class="card" style="width: 18rem;">
-	  <img class="card-img-top" alt="${course.name}_image" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80"/>
+	  <img class="card-img-top" alt="${course.name}_image" src="${course.imageUrl}"/>
 	  <div class="card-body">
 	    <h5 class="card-title cardTitle">${course.name}</h5>
 	  </div>

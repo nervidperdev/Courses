@@ -157,7 +157,7 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		Session sesion = DaoUtility.getSession();
 		Transaction transaction = sesion.beginTransaction();
 		try {
-			MutationQuery query = sesion.createMutationQuery("update Courses set endDate =:endDate where courseId = :courseId");
+			MutationQuery query = sesion.createMutationQuery("update Course set endDate =:endDate where courseId = :courseId");
 			query.setParameter("endDate",LocalDate.now());
 			query.setParameter("courseId", courseId);
 			query.executeUpdate();

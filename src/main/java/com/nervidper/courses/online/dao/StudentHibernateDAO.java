@@ -59,8 +59,8 @@ public class StudentHibernateDAO implements StudentDAO {
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			TypedQuery<Student> query = session.createQuery("select S.* from Student S join Enrollment E on S.studentID = E.studentID join Courses C on E.courseID = C.courseID where C.courseID = :courseID", Student.class);
-			query.setParameter("courseID", courseId);
+			TypedQuery<Student> query = session.createQuery("from Student S join Enrollment E on S.studentId = E.student.studentId join Course C on E.course.courseId = C.courseId where C.courseId = :courseId", Student.class);
+			query.setParameter("courseId", courseId);
 			System.out.println(query);
 			studentList = query.getResultList();
 			System.out.println(studentList);

@@ -126,6 +126,8 @@ main {
 
 .cardTitle {
 	text-align: center;
+	min-height: 5rem;
+
 }
 
 .cardBody {
@@ -143,5 +145,13 @@ main {
 
 .emptyResult {
 	text-align: center;
+	color: black;
+}
+
+.myCoursesTitle {
+	margin: 3rem 0 5rem 2rem;
+}
+
+.modalBody, .modalTitle {
 	color: black;
 }

@@ -39,15 +39,17 @@ public class Course {
 	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Enrollment> enrollments;
+	private String imageUrl;
 	
 	public Course(String name, LocalDate startDate, LocalDate endDate, Teacher teacher, Category category,
-			List<Enrollment> enrollments) {
+			List<Enrollment> enrollments, String imageUrl) {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.teacher = teacher;
 		this.category = category;
 		this.enrollments = enrollments;
+		this.imageUrl = imageUrl;
 	}
 
 	
@@ -114,6 +116,17 @@ public class Course {
 	public void setEnrollments(List<Enrollment> enrollments) {
 		this.enrollments = enrollments;
 	}
+	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 
 	@Override
 	public int hashCode() {

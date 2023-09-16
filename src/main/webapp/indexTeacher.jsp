@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +13,13 @@
 <link rel="stylesheet" href="indexPrincipal.css" type="text/css">
 </head>
 <body onload="initPageTeacher()">
-	<% String name = (String) session.getAttribute("name");%>
-	<% String surname = (String) session.getAttribute("surname");%>
-	
+	<%
+	String name = (String) session.getAttribute("name");
+	%>
+	<%
+	String surname = (String) session.getAttribute("surname");
+	%>
+
 	<header class="container-fluid w-100 fixed-top mt-3">
 		<nav class="navbar h-100">
 
@@ -34,7 +38,8 @@
 					aria-labelledby="offcanvasExampleLabel">
 					<div class="offcanvas-body menuBody">
 						<ul>
-							<li><a class="option" href="registerCourse.jsp">Crear Curso</a></li>
+							<li><a class="option" href="registerCourse.jsp">Crear
+									Curso</a></li>
 							<li><a class="option" href="Logout">Cerrar sesión</a></li>
 						</ul>
 					</div>
@@ -50,14 +55,36 @@
 
 	<main>
 
-		<% if(name != null && surname != null) { %>
+		<%
+		if (name != null && surname != null) {
+		%>
 		<h1 class="helloMessage">
-			Hola, 
-			<%= name %>
-			<%= surname %></h1>
-		<% } %>
+			Hola,
+			<%=name%>
+			<%=surname%></h1>
+		<%
+		}
+		%>
 
 		<div id="searchResult"></div>
+
+		<div class="modal fade" id="studentsModal" tabindex="-1"
+			role="dialog"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title modalTitle">Estudiantes</h5>
+					</div>
+					<div class="modal-body modalBody">
+						<ul id="studentsList"></ul>
+					</div>
+					<div class="modal-footer">
+						<button id="modalClose" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
 
