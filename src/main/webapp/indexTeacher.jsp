@@ -5,34 +5,53 @@
 <head>
 <meta charset="UTF-8">
 <title>TUS CURSOS</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="indexPrincipal.css" type="text/css">
 </head>
 <body onload="initPageTeacher()">
 	<% String name = (String) session.getAttribute("name");%>
 	<% String surname = (String) session.getAttribute("surname");%>
-	<header>
-		<nav role="navigation">
-			<div id="menuToggle">
-				<input type="checkbox" /> 
-				<span></span> 
-				<span></span> 
-				<span></span>
-				<ul id="menu">
-					<li><a href="registerCourse.jsp">Crear Curso</a></li>
-					<li><a href="Logout">Cerrar Sesión</a></li>
-				</ul>
+	
+	<header class="container-fluid w-100 fixed-top mt-3">
+		<nav class="navbar h-100">
+
+			<div class="row w-100 h-100">
+				<div class="col d-flex">
+					<div id="nav-icon3" data-bs-toggle="offcanvas"
+						data-bs-target="#menuOptions">
+						<div class="">
+							<span></span> <span></span> <span></span> <span></span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="offcanvas offcanvas-start menu" id="menuOptions"
+					aria-labelledby="offcanvasExampleLabel">
+					<div class="offcanvas-body menuBody">
+						<ul>
+							<li><a class="option" href="registerCourse.jsp">Crear Curso</a></li>
+							<li><a class="option" href="Logout">Cerrar sesión</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-9">
+					<input class="form-control w-100" id="findCourse"
+						placeholder="Buscar curso..." type="text">
+				</div>
 			</div>
 		</nav>
 	</header>
 
 	<main>
-		<div class="contenedor">
-			<input class="inputText" id="findCourse" type="text" placeholder="Buscar curso"> 
-		</div>
-
 
 		<% if(name != null && surname != null) { %>
-		<h1>
+		<h1 class="helloMessage">
 			Hola, 
 			<%= name %>
 			<%= surname %></h1>
@@ -44,6 +63,10 @@
 
 
 </body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+	crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="indexTeacher.js"></script>
 </html>
