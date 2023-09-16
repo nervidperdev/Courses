@@ -40,6 +40,12 @@ public class Student extends User {
 		this.password = password;
 		this.enrollmentList = enrollmentList;
 	}
+	
+	public Student(int studentId) {
+		super();
+		this.studentId = studentId;
+	}
+
 
 
 	public Student() {

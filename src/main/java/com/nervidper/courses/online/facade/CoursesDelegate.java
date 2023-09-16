@@ -5,6 +5,7 @@ import com.nervidper.courses.online.exception.LoginException;
 import com.nervidper.courses.online.exception.RegistrationException;
 import com.nervidper.courses.online.model.Category;
 import com.nervidper.courses.online.model.Course;
+import com.nervidper.courses.online.model.Enrollment;
 import com.nervidper.courses.online.model.Student;
 import com.nervidper.courses.online.model.User;
 
@@ -14,7 +15,7 @@ public interface CoursesDelegate {
 	
 	public Student register(String name, String surname, String email, String password) throws RegistrationException;
 	
-	public boolean enrollInCourse(int courseId);
+	public boolean enrollInCourse(Enrollment enrollment);
 	
 	public List<Course> findAllCourses();
 	
@@ -33,6 +34,6 @@ public interface CoursesDelegate {
 	public List<Student> findStudentsByCourse(int courseId);
 	
 	public List<Course> findTeacherCoursesByName(int teacherID, String name);
-
-
+	
+	public boolean finishCourse(int courseId);
 }

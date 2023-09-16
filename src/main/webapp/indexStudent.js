@@ -31,7 +31,7 @@ function printCourses(courses) {
 	  <img class="card-img-top" alt="${course.name}_image" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80"/>
 	  <div class="card-body cardBody">
 	    <h5 class="card-title cardTitle">${course.name}</h5>
-	    <button class="btn btn-outline-dark" type="button" onclick="enrollInCourse()">Matrículate</button>
+	    <button class="btn btn-outline-dark" type="button" onclick="enrollInCourse(this)">Matrículate</button>
 	    <input type="hidden" id="courseId" value="${course.courseId}"/>
 	  </div>
 	</div>`;
@@ -41,12 +41,13 @@ function printCourses(courses) {
 	divResult.innerHTML = resultHtml;
 }
 
-function enrollInCourse() {
-	let courseIdInput = document.getElementById("courseId")
+function enrollInCourse(event) {
+	// Coge el elemento padre (quien contiene el boton) y dentro de él busca un elemento con id courseId
+	let courseId = event.parentElement.querySelector("#courseId").value
 		axios.post(
 			"EnrollCourse",
 			null,
-			{ params: { courseId : courseIdInput.value}})
+			{ params: { courseId : courseId}})
 			.then(function(response) {
 				printCourses(response.data);
 			}).catch(function(error) {

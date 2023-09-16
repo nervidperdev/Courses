@@ -1,11 +1,12 @@
 package com.nervidper.courses.online.dao;
 
 import java.util.List;
+import com.nervidper.courses.online.model.Enrollment;
 import com.nervidper.courses.online.model.Student;
 
 public interface StudentDAO {
 	
-	public boolean enrollInCourse(int courseId);
+	public boolean enrollInCourse(Enrollment enrollment);
 	
 	public List<Student> findStudentsByCourse(int courseId); 
 

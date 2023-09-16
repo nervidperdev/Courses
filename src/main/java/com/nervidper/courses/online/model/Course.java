@@ -50,8 +50,14 @@ public class Course {
 		this.enrollments = enrollments;
 	}
 
-	public Course() {}
+	
+	public Course(int courseId) {
+		this.courseId = courseId;
+	}
 
+
+	public Course() {}
+	
 	public int getCourseId() {
 		return courseId;
 	}

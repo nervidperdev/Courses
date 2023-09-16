@@ -2,8 +2,6 @@ package com.nervidper.courses.online.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import com.nervidper.courses.online.facade.CoursesDelegate;
 import com.nervidper.courses.online.facade.CoursesFacade;
 import com.nervidper.courses.online.model.Category;
@@ -22,8 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegisterCourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		int teacherID = (Integer) request.getSession().getAttribute("userId");
 		int categoryID = Integer.parseInt(request.getParameter("select"));
 		String nameCourse = request.getParameter("name");

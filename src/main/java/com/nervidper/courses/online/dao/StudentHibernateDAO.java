@@ -5,8 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import com.nervidper.courses.online.model.Course;
+import com.nervidper.courses.online.model.Enrollment;
 import com.nervidper.courses.online.model.Student;
 
 import jakarta.persistence.TypedQuery;
@@ -18,7 +17,6 @@ public class StudentHibernateDAO implements StudentDAO {
 		Student student = null;
 		Session sesion = DaoUtility.getSession();
 		Transaction transaccion = sesion.beginTransaction();
-		System.out.println(sesion);
 		try {
 			TypedQuery<Student> query = sesion.createQuery("from Student where email = :email" , Student.class);
 			query.setParameter("email",email);
@@ -39,7 +37,6 @@ public class StudentHibernateDAO implements StudentDAO {
 		student.setSurname(surname);
 		student.setEmail(email);
 		student.setPassword(password);
-		
 		Session sesion = DaoUtility.getSession();
 		Transaction transaccion = sesion.beginTransaction();
 		try {
@@ -62,7 +59,7 @@ public class StudentHibernateDAO implements StudentDAO {
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			TypedQuery<Student> query = session.createQuery("select S.* from student S join enrollment E on S.studentID = E.studentID join courses C 	on E.courseID = C.courseID where C.courseID = :courseID", Student.class);
+			TypedQuery<Student> query = session.createQuery("select S.* from Student S join Enrollment E on S.studentID = E.studentID join Courses C on E.courseID = C.courseID where C.courseID = :courseID", Student.class);
 			query.setParameter("courseID", courseId);
 			System.out.println(query);
 			studentList = query.getResultList();
@@ -77,9 +74,22 @@ public class StudentHibernateDAO implements StudentDAO {
 	}
 
 	@Override
-	public boolean enrollInCourse(int courseId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean enrollInCourse(Enrollment enrollment) {
+		boolean enrollCourse = false;
+		Session sesion = DaoUtility.getSession();
+		Transaction transaccion = sesion.beginTransaction();
+		try {
+			sesion.persist(enrollment);
+			transaccion.commit();
+			sesion.close();	
+		} catch(HibernateException e){
+			e.printStackTrace();
+			transaccion.rollback();
+			enrollCourse = false;
+		}
+		sesion.close();
+		return enrollCourse;
+		
 	}
 
 

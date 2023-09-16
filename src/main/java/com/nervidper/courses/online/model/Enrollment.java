@@ -41,6 +41,15 @@ public class Enrollment {
 		this.completed = completed;
 	}
 	
+	
+	public Enrollment(Course course, Student student, LocalDate enrollmentDate, boolean completed) {
+		this.course = course;
+		this.student = student;
+		this.enrollmentDate = enrollmentDate;
+		this.completed = completed;
+	}
+
+
 	public Enrollment() {
 		
 	}

@@ -31,14 +31,15 @@ function printCourses(courses) {
 	let resultHtml = '<div class="courseContainer">';
 	for (let course of courses) {
 		resultHtml = resultHtml + `
-    <div class="card" style="width: 18rem;">
-	  <img class="card-img-top" alt="${course.name}_image" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80"/>
-	  <div class="card-body cardBody">
-	    <h5 class="card-title cardTitle">${course.name}</h5>
-		<input class="btn btn-outline-dark" type="button" value="ALUMNOS MATRICULADOS"/>
-	    <input class="btn btn-outline-dark" type="button" value="FINALIZAR CURSO"/>
-	  </div>
-	</div>`;
+	    <div class="card" style="width: 18rem;">
+		  <img class="card-img-top" alt="${course.name}_image" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80"/>
+		  <div class="card-body cardBody">
+		    <h5 class="card-title cardTitle">${course.name}</h5>
+			<input class="btn btn-outline-dark" type="button" value="ALUMNOS MATRICULADOS" onclick="findStudentsByCourse()"/>
+		    <input class="btn btn-outline-dark" type="button" value="FINALIZAR CURSO" onclick = "finishCourse()"/>
+			<input type="hidden" id="inputHidden" value="${course.courseId}"/>
+		  </div>
+		</div>`;
 	}
 	resultHtml = resultHtml + '</div>';
 
@@ -64,6 +65,44 @@ function findCourseByName() {
 	} else {
 		loadAllCourses();
 	}
+	
+}
+
+function printStudents(students) {
+	
+}
+
+
+function findStudentsByCourse() {
+	let input = document.getElementById("inputHidden").value;
+		axios.post(
+			"FindStudentByCourse",
+			null,
+			{ params: { courseId: input} }).then(function(response) {
+				printStudents(response.data);
+			}).catch(function(error) {
+				console.log(error);
+			});
+	
+}
+
+function finishCourse() {
+	let input = document.getElementById("inputHidden").value;
+		axios.put(
+			"FinishCourse",
+			null,
+			{ params: { courseId: input} }).then(function(response) {
+				if (response.status == 204) {
+					// curso se modifico bien
+					
+				} else {
+					//hubo error
+					
+				}
+			}).catch(function(error) {
+				console.log(error);
+			});
+	
 }
 
 function showEmptyResult(emptyMessage) {

@@ -1,12 +1,13 @@
 package com.nervidper.courses.online.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.MutationQuery;
 import com.nervidper.courses.online.model.Course;
-
 import jakarta.persistence.TypedQuery;
 
 public class CoursesHibernateDAO implements CoursesDAO {
@@ -151,12 +152,23 @@ public class CoursesHibernateDAO implements CoursesDAO {
 	
 	
 	@Override
-	public boolean finishCourse(int courseId) {
-		// TODO Auto-generated method stub
-		// PAra crear la fecha de finalizacion con dia actual usar LocalDate.now() y
-		// pasarla a la bd para el campo endDate
-		// query.setParameter("endDate", LocalDate.now());
-		return false;
+	public boolean finishCourse(int courseId) {	
+		boolean finishCourse = true;
+		Session sesion = DaoUtility.getSession();
+		Transaction transaction = sesion.beginTransaction();
+		try {
+			MutationQuery query = sesion.createMutationQuery("update Courses set endDate =:endDate where courseId = :courseId");
+			query.setParameter("endDate",LocalDate.now());
+			query.setParameter("courseId", courseId);
+			query.executeUpdate();
+			transaction.commit();
+			sesion.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+			finishCourse = false;
+		}
+		return finishCourse;
 	}
 
 	@Override
@@ -165,7 +177,6 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		Session session = DaoUtility.getSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			//TypedQuery<Course> query = session.createQuery("from Student S join enrollment E on S.studentId = E.student.studentId join courses C on E.course.courseId = C.courseId where S.studentId = :studentId", Course.class);
 			TypedQuery<Course> query = session.createQuery("from Course as C join Enrollment as E on C.courseId = E.course.courseId join Student as S on E.student.studentId = S.studentId where S.studentId = :studentId", Course.class);
 			query.setParameter("studentId", studentId);
 			courseList = query.getResultList();

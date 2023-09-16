@@ -15,6 +15,7 @@ import com.nervidper.courses.online.exception.UserNotLogged;
 import com.nervidper.courses.online.exception.WrongPasswordException;
 import com.nervidper.courses.online.model.Category;
 import com.nervidper.courses.online.model.Course;
+import com.nervidper.courses.online.model.Enrollment;
 import com.nervidper.courses.online.model.Student;
 import com.nervidper.courses.online.model.Teacher;
 import com.nervidper.courses.online.model.User;
@@ -62,9 +63,9 @@ public class CoursesFacade implements CoursesDelegate {
 	}
 
 	@Override
-	public boolean enrollInCourse(int courseId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean enrollInCourse(Enrollment enrollment) {
+		StudentDAO dao = new StudentHibernateDAO();
+		return dao.enrollInCourse(enrollment);
 	}
 
 	@Override
@@ -124,5 +125,11 @@ public class CoursesFacade implements CoursesDelegate {
 	public List<Course> findTeacherCoursesByName(int teacherID, String name) {
 		CoursesDAO dao = new CoursesHibernateDAO();
 		return dao.findTeacherCoursesByName(teacherID, name);
+	}
+
+	@Override
+	public boolean finishCourse(int courseId) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.finishCourse(courseId);
 	}
 }
