@@ -25,23 +25,19 @@ public class RegisterCourseServlet extends HttpServlet {
 		int categoryID = Integer.parseInt(request.getParameter("select"));
 		String nameCourse = request.getParameter("name");
 		String startDate = request.getParameter("startDate");
-		String endDate = request.getParameter("endDate");
 		LocalDate startDate1 = LocalDate.parse(startDate);
-		LocalDate endDate1 = LocalDate.parse(endDate);
 		Category category = new Category(categoryID);
 		Teacher teacher = new Teacher(teacherID);
-		Course course = new Course(nameCourse, startDate1, endDate1, teacher, category, null);
+		Course course = new Course(nameCourse, startDate1, null, teacher, category, null, "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y3Vyc298ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=320&q=60");
 		CoursesDelegate facade = new CoursesFacade();
 		course = facade.createCourse(course);
 
 		if (course != null) {
-			request.setAttribute("message", "El curso se ha creado correctamente");
-
+			request.getRequestDispatcher("indexTeacher.jsp").forward(request, response);
 		} else {
 			request.setAttribute("message", "No se ha creado");
 
 		}
-		request.getRequestDispatcher("registerCourse.jsp").forward(request, response);
 	}
 
 }

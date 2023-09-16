@@ -20,10 +20,6 @@
 				<input id="startDate" type="date" name="startDate" required>
 				<label for="starDate">Fecha Inicio</label>
 			</div>
-			<div class="date">
-				<input id="endDate" type="date" name="endDate" required> <label
-					for="endDate">Fecha Fin</label>
-			</div>
 			<div class="contenedor">
 				<select id="select" name="select">
 					<option value="">Todos los cursos</option>
