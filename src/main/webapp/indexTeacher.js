@@ -11,7 +11,6 @@ function toggle() {
 	navIcon.classList.toggle('open')
 }
 
-
 function loadAllCourses() {
 	axios.get(
 		"FindCoursesByTeacher"

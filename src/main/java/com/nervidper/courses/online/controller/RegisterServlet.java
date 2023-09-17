@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (RegistrationException e) {
         	e.printStackTrace();
         	request.setAttribute("error", "Usuario no registrado");
+        	request.getRequestDispatcher("registerStudent.jsp").forward(request, response);
         }
         
 	}

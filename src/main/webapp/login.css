@@ -189,3 +189,8 @@ body {
 	color: white;
 	margin-right: 0.25rem;
 }
+
+#loginError {
+	text-align: center;
+	color: red;
+}

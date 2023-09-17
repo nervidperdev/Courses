@@ -90,3 +90,9 @@ body {
   position: absolute;
   display: block;
 }
+
+#error {
+	margin-top: 1rem;
+	text-align: center;
+	color: red;
+}

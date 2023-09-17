@@ -2,6 +2,8 @@
  * 
  */
 document.getElementById("nav-icon3").addEventListener("click", toggle);
+document.getElementById("enrollErrorModal").addEventListener("click", closeModal);
+document.getElementById("enrollSuccessModal").addEventListener("click", closeSuccessModal);
 
 function toggle() {
 	let navIcon = document.getElementById("nav-icon3");
@@ -51,13 +53,17 @@ function enrollInCourse(event) {
 			.then(function(response) {
 				let isUserEnrolled = response.data["userEnrolled"];
 				if(isUserEnrolled) {
+					let successModal = document.getElementById('enrollSuccessModal');
+					new bootstrap.Modal(successModal, {}).show();
 					initPageStudent();
 				} else {
-					// Modal de error diciendo que no pudimos matricularnos
+					let enrollErrorModal = document.getElementById('enrollErrorModal');
+					new bootstrap.Modal(enrollErrorModal, {}).show();
 				}
-
 			}).catch(function(error) {
 				console.log(error);
+				let enrollErrorModal = document.getElementById('enrollErrorModal');
+				new bootstrap.Modal(enrollErrorModal, {}).show();
 			});
 	
 }
@@ -72,4 +78,14 @@ function showEmptyResult(emptyMessage) {
 	        </div>
 		</div>
 		`
+}
+
+function closeModal() {
+	let modal = document.getElementById('enrollErrorModal');
+	bootstrap.Modal.getInstance(modal).hide();
+}
+
+function closeSuccessModal() {
+	let modal = document.getElementById('enrollSuccessModal');
+	bootstrap.Modal.getInstance(modal).hide();
 }

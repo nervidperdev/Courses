@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         	HttpSession session = request.getSession();
             session.setAttribute("email", email);
             session.setAttribute("type", type);
-            System.out.println("type");
         	if (loggedUser instanceof Teacher) {
         		Teacher teacher = (Teacher) loggedUser;
         		session.setAttribute("name", teacher.getName());
@@ -49,9 +48,11 @@ public class LoginServlet extends HttpServlet {
         } catch(WrongPasswordException e) {
         	e.printStackTrace();
         	request.setAttribute("error", "Los valores introducidos son incorrectos");
+        	request.getRequestDispatcher("login.jsp").forward(request, response);
         } catch (LoginException e) {
         	e.printStackTrace();
         	request.setAttribute("error", "No se pudo iniciar sesión");
+        	request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 }

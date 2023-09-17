@@ -41,6 +41,17 @@
       <label>Repita Contraseña</label>
     </div>
     <input type ="submit" class="btn btn-outline-light" value="REGISTRAR">
+    
+    <% String error = (String) request.getAttribute("error");%>
+		<div id="error">
+			<%
+			if (error != null) {
+			%>
+			<span><%=error%></span>
+			<%
+			}
+			%>
+		</div>
   </form>
 </div>
 </body>
