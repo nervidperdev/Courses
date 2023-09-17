@@ -75,7 +75,7 @@ public class StudentHibernateDAO implements StudentDAO {
 
 	@Override
 	public boolean enrollInCourse(Enrollment enrollment) {
-		boolean enrollCourse = false;
+		boolean enrollCourse = true;
 		Session sesion = DaoUtility.getSession();
 		Transaction transaccion = sesion.beginTransaction();
 		try {
