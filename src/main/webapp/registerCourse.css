@@ -4,21 +4,11 @@ html {
 body {
   margin:0;
   padding:0;
+  color: white;
   font-family: sans-serif;
   background: linear-gradient(#141e30, #243b55);
 }
 
-.inputTeacher {
-	color: white;
-}
-
-#enlace {
-	color: white
-}
-
-.visibility{
-	display:block;
-}
 .hidden {
 	display:none;
 }
@@ -49,7 +39,7 @@ body {
 
 .login-box .user-box input {
   width: 100%;
-  padding: 10px 0;
+  padding: 5px 0;
   font-size: 16px;
   color: #fff;
   margin-bottom: 30px;
@@ -181,7 +171,15 @@ body {
   }
 }
 
-.date {
-	margin-top: 15px;
+.date label {
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
+input[type=submit] {
+	margin-top: 30px;
+}
+
+#buttonContainer {
+	text-align: center;
+}
