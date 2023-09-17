@@ -26,15 +26,12 @@
 
 			<div class="bottomContainer">
 				<div class="radioGroup">
-						<label class="inputTeacher" id="inputTeacher">Profesor</label> <input
-							class="form-check-input"
-						type="radio" value="teacher"
-							name="type" onclick="visibility();">
-						<label class="inputTeacher" id="inputStudent">Alumno</label> <input
-							class="form-check-input" type="radio" value="student" name="type"
-							onclick="visibility();" checked="checked">
+					<label class="inputTeacher">Profesor</label> <input id="inputTeacher"
+						class="form-check-input" type="radio" value="teacher" name="type" /> <label class="inputTeacher"
+						>Alumno</label> <input id="inputStudent" class="form-check-input"
+						type="radio" value="student" name="type" checked />
 				</div>
-				<input type="submit" class="btn btn-outline-light" value="ACCEDER">
+				<input type="submit" class="btn btn-outline-light" value="ACCEDER" />
 			</div>
 
 		</form>
