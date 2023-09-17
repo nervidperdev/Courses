@@ -36,4 +36,6 @@ public interface CoursesDelegate {
 	public List<Course> findTeacherCoursesByName(int teacherID, String name);
 	
 	public boolean finishCourse(int courseId);
+	
+	public List<Course> searchAllCoursesPageStudent(int studentId);
 }

@@ -132,4 +132,12 @@ public class CoursesFacade implements CoursesDelegate {
 		CoursesDAO dao = new CoursesHibernateDAO();
 		return dao.finishCourse(courseId);
 	}
+
+	@Override
+	public List<Course> searchAllCoursesPageStudent(int studentId) {
+		CoursesDAO dao = new CoursesHibernateDAO();
+		return dao.searchAllCoursesPageStudent(studentId);
+	}
+	
+	
 }

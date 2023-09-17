@@ -23,6 +23,8 @@ public interface CoursesDAO {
 	public Course createCourse(Course course);
 	
 	public List<Course> findAllCoursesByEnrollment(int studentID);
+	
+	public List<Course> searchAllCoursesPageStudent(int studentId);
 
 	
 }

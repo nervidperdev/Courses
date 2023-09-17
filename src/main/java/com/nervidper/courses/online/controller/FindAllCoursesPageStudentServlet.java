@@ -26,8 +26,9 @@ public class FindAllCoursesPageStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int studentId = (Integer) request.getSession().getAttribute("userId");
 		CoursesDelegate facade = new CoursesFacade();
-		List<Course> courses = facade.findAllCourses();
+		List<Course> courses = facade.searchAllCoursesPageStudent(studentId);
 		ObjectMapper mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();

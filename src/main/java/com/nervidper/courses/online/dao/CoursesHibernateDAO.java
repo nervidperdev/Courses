@@ -189,6 +189,25 @@ public class CoursesHibernateDAO implements CoursesDAO {
 		session.close();
 		return courseList;
 	}
+	
+	public List<Course> searchAllCoursesPageStudent(int studentId) {
+		List<Course> courseList = new ArrayList<Course>();
+		Session session = DaoUtility.getSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			TypedQuery<Course> query = session.createQuery("from Course where courseId not in (select distinct C.courseId from Course as C join Enrollment as E on C.courseId = E.course.courseId where E.student.studentId = :studentId)", Course.class);
+			query.setParameter("studentId", studentId);
+			courseList = query.getResultList();
+			System.out.println(courseList);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		session.close();
+		return courseList;
+	}
+
 
 	
 }

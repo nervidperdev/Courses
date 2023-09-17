@@ -10,7 +10,7 @@ function toggle() {
 
 function initPageStudent() {
 	axios.get(
-		"FindAllCourses"
+		"FindAllCoursesPageStudent"
 	).then(function(response) {
 		if (response == null || response.data == null || response.data.length == 0) {
 			showEmptyResult({ title: "No hay cursos que mostrarNo hay cursos disponibles", body: "Actualmente no tenemos cursos para ofrecerte" })
@@ -49,7 +49,13 @@ function enrollInCourse(event) {
 			null,
 			{ params: { courseId : courseId}})
 			.then(function(response) {
-				printCourses(response.data);
+				let isUserEnrolled = response.data["userEnrolled"];
+				if(isUserEnrolled) {
+					initPageStudent();
+				} else {
+					// Modal de error diciendo que no pudimos matricularnos
+				}
+
 			}).catch(function(error) {
 				console.log(error);
 			});
