@@ -36,7 +36,7 @@
 			
 		</form>
 		<% if (message != null) { %>
-		<div><%=message %></div>
+		<div class="messageError"><%=message %></div>
 		<% } %>
 	</div>
 </body>

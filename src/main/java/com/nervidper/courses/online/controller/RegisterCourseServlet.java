@@ -35,7 +35,8 @@ public class RegisterCourseServlet extends HttpServlet {
 		if (course != null) {
 			request.getRequestDispatcher("indexTeacher.jsp").forward(request, response);
 		} else {
-			request.setAttribute("message", "No se ha creado");
+			request.setAttribute("message", "El curso no ha podido crearse");
+			request.getRequestDispatcher("registerCourse.jsp").forward(request, response);
 
 		}
 	}
